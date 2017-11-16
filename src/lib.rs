@@ -6,10 +6,29 @@ use spectral::prelude::*;
 
 mod names;
 
+/// Get all character names
+///
+/// # Example
+///
+/// ```rust,ignore
+/// let all_names = starwars-names::all();
+///
+/// assert_that(&all_names).has_length(93);
+/// ```
 pub fn all() -> Vec<&'static str> {
     names::get_names()
 }
 
+/// Get radom names
+///
+/// # Example
+///
+/// ```rust,ignore
+/// let num = 3 as usize;
+/// let random_names = starwars-names::random(num);
+///
+/// assert_that(&random_names).has_length(num);
+/// ```
 pub fn random(n: usize) -> Vec<&'static str> {
     let mut rng = thread_rng();
     let all_names = names::get_names();
