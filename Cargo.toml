@@ -2,6 +2,8 @@
 name = "starwars-names"
 version = "0.1.0"
 authors = ["Dmitry Rybin <ayrowa@ya.ru>"]
+license = "MIT"
+description = "Get random names from Star Wars characters"
 
 [dependencies]
 rand="0.3.12"
