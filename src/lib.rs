@@ -1,10 +1,10 @@
 extern crate rand;
+#[cfg(test)]
 extern crate spectral;
 
-use rand::{thread_rng, sample};
-use spectral::prelude::*;
-
 mod names;
+
+use rand::thread_rng;
 
 /// Get all character names
 ///
@@ -16,7 +16,7 @@ mod names;
 /// assert_that(&all_names).has_length(93);
 /// ```
 pub fn all() -> Vec<&'static str> {
-    names::get_names()
+    names::NAMES.to_owned()
 }
 
 /// Get radom names
@@ -31,15 +31,15 @@ pub fn all() -> Vec<&'static str> {
 /// ```
 pub fn random(n: usize) -> Vec<&'static str> {
     let mut rng = thread_rng();
-    let all_names = names::get_names();
 
-    sample(&mut rng, all_names, n)
+    rand::seq::sample_slice(&mut rng, names::NAMES, n)
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
+    use super::{all, random};
+    use spectral::prelude::*;
+    
     #[test]
     fn get_all() {
         let all_names = all();
