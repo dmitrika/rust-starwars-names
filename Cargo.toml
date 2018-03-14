@@ -1,10 +1,12 @@
 [package]
 name = "starwars-names"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Dmitry Rybin <ayrowa@ya.ru>"]
 license = "MIT"
 description = "Get random names from Star Wars characters"
 
 [dependencies]
-rand="0.3.12"
+rand="0.4.2"
+
+[dev-dependencies]
 spectral = "0.6.0"
